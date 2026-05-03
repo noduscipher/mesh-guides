@@ -49,6 +49,35 @@ This repository is about **guides**, not one-click installers, but the general f
 
 Always prefer the upstream docs for the exact install commands on your platform, and use these guides as a layer of opinionated integration on top.
 
+## 30-second quickstart (Debian/Ubuntu)
+
+This is a minimal, opinionated starting point for recent Debian/Ubuntu systems.
+
+```bash1.
+Install Python tooling and pipx
+sudo apt update
+sudo apt install -y python3 python3-venv pipx
+
+2. Make sure pipx-installed tools are on your PATH
+pipx ensurepath
+exec $SHELL # open a new shell so PATH is updated
+
+3. Install Reticulum and NomadNet into isolated environments
+pipx install rns
+pipx install nomadnet
+
+4. Start Reticulum once to generate a default config
+rnsd &
+
+5. Run NomadNet (interactive client)
+nomadnet
+
+After this, adjust your Reticulum configuration (interfaces, transports, radios, etc.) according to your hardware and threat model, then follow one of the profiles in this repository:
+
+- `DESKTOP-DAILY-DRIVER.md`
+- `LAPTOP-DAILY-DRIVER.md`
+- `ONTHEGO.md`
+
 ## Why
 
 Modern communication relies heavily on centralized infrastructure and always-on connectivity.  
