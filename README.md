@@ -84,6 +84,14 @@ Modern communication relies heavily on centralized infrastructure and always-on 
 Reticulum and NomadNet make it possible to build small, resilient, and privacy-respecting communication systems that can operate off-grid, over radio, or across ad-hoc links.  
 These guides are meant to be a starting point for people who want to own more of their infrastructure without having to assemble all the pieces from scratch.
 
+## Value for Value
+
+If these guides help you build or maintain your own off-grid mesh, you can send value back in any way that makes sense to you.
+
+The primary goal here is to keep small, low-power nodes online and evolving quietly over time, not to optimize for attention or growth.
+
+In a future update, this section will include optional details for supporting this work (for example: Bitcoin on-chain, Lightning, or other privacy-respecting ways to contribute). Until then, simply using, testing, and sharing these guides is already valuable feedback.
+
 ## License
 
 This project is distributed under the terms described in the `LICENSE` file in this repository.
