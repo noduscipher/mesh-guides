@@ -3,46 +3,41 @@
 These are just notes about how this mesh starter kit is evolving.  
 No deadlines, no guarantees. Only what actually runs.
 
-## Current focus – single nodes
+## current focus – single nodes
 
-Goal: Make it easy for a single person to turn everyday machines into reliable Reticulum + NomadNet nodes.
+Everyday machines, turned into quiet Reticulum + NomadNet nodes.
 
-- Maintain clear guides for:
-  - Desktop daily driver (`DESKTOP-DAILY-DRIVER.md`)
-  - Laptop daily driver (`LAPTOP-DAILY-DRIVER.md`)
-  - On-the-go kit (`ONTHEGO.md`)
-- Keep Debian/Ubuntu and Arch/Manjaro quickstarts in the README up to date.
-- Focus on reproducible, low-friction installs and minimal required dependencies.
+- Desktop daily driver: `DESKTOP-DAILY-DRIVER.md`
+- Laptop daily driver: `LAPTOP-DAILY-DRIVER.md`
+- On-the-go kit: `ONTHEGO.md`
 
-Status: **In progress**
+Debian/Ubuntu and Arch/Manjaro quickstarts live in the `README.md`.  
+Keep the steps simple, repeatable, and kind to low-power hardware.
 
-## Next steps – small home / friend mesh
+## next steps – small home / friend mesh
 
-Goal: Help people connect a handful of nodes into a resilient small mesh (home, friends, neighbours).
+A few trusted nodes, linked together without drama.
 
-- Add examples and notes for:
-  - Always-on nodes (home server, RPi, or similar)
-  - Mixed transports (LAN, Wi-Fi, VPN, radio links)
-  - Basic naming, addressing, and routing patterns in Reticulum
-- Document practical topologies:
-  - “home base + laptop + on-the-go kit”
-  - “two homes bridged via VPN or Tailscale”
-- Provide simple troubleshooting checklists (connectivity, latency, message reliability).
+- One always-on box (home server, RPi, or similar)
+- A couple of laptops and on-the-go kits
+- Links over LAN, Wi‑Fi, VPN, or radio
 
-Status: **Planned**
+Sketch small topologies like:
 
-## Later – field / remote nodes and V4V
+- “home base + laptop + on-the-go kit”
+- “two homes bridged with Tailscale or a simple tunnel”
 
-Goal: Support more advanced off-grid and remote deployments, and explore a small Value-for-Value ecosystem around these guides.
+Write down what breaks, and what keeps working, when links get weak or disappear.
 
-- Add guidance for:
-  - Remote / solar-powered nodes and low-bandwidth radio links
-  - Running Reticulum and NomadNet on small SBCs and dedicated field hardware
-- Integrate with a public NomadNet / Micron index:
-  - Link this repository from the mesh node’s public index
-  - Provide example site sections that explain the mesh to visitors
-- Introduce an optional Value-for-Value (V4V) section:
-  - Document ways to support the project (Lightning, BTC on-chain, etc.)
-  - Keep all funding mechanisms optional and privacy-respecting.
+## later – field / remote nodes and V4V
 
-Status: **Planned**
+Nodes that live closer to weather, distance, and failure.
+
+- Remote / solar-powered boxes and low‑bandwidth radio links
+- Small SBCs dedicated to Reticulum and NomadNet
+- Pages served from NomadNet / Micron, explaining the mesh to whoever finds it
+
+If this work proves useful, value can flow back in many forms:  
+time, feedback, patches, or a few sats over Bitcoin and Lightning.
+
+Any support should stay optional, quiet, and privacy‑respecting.
