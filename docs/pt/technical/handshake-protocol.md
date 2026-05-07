@@ -170,5 +170,5 @@ R: Sim! Podes dizer o teu código por voz e funciona na mesma.
 
 ☥ walk quietly, ₿ut keep the signal alive ⚡
 
-*Du_arte ☥ rawmesh — Beira Baixa, Portugal*
+
 *Licença: CC BY-SA 4.0*
