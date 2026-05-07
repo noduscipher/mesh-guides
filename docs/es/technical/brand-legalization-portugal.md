@@ -142,5 +142,5 @@
 
 ☥ walk quietly, ₿ut keep the signal alive ⚡
 
-*Du_arte ☥ rawmesh — Beira Baixa, Portugal*
+
 *Licencia: CC BY-SA 4.0*
