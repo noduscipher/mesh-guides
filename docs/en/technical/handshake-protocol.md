@@ -170,5 +170,5 @@ A: Yes — you can speak the code aloud and it works the same way.
 
 ☥ walk quietly, ₿ut keep the signal alive ⚡
 
-*Du_arte ☥ rawmesh — Beira Baixa, Portugal*
+
 *License: CC BY-SA 4.0*
