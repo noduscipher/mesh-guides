@@ -1,138 +1,97 @@
-# Mesh Network Daily Driver Guides
+# mesh-guides
 
-Complete setup guides for daily mesh networking workflow on macOS.
+Off-grid Reticulum + NomadNet mesh networking starter kit for Linux and desktop systems.
 
-**Raw, minimal, resilient.**
+## What is this?
 
----
+This repository collects opinionated guides for turning everyday machines into resilient off-grid mesh nodes using Reticulum and NomadNet.  
+It focuses on practical, reproducible setups for desktop and laptop devices, with a bias towards CLI tools, minimal dependencies, and composable building blocks.  
+You can mix these guides with radio links, local networks, or overlay networks like Tailscale or VPNs.
 
-## 📖 What's This?
+## Scenarios and guides
 
-Step-by-step guides to run a complete mesh networking setup on Mac (iMac or MacBook Air) with:
+Pick the profile that best matches the role you want this node to play in your mesh:
 
-- **Reticulum** — cryptographic mesh network protocol
-- **NomadNet** — decentralized microblogging and pages
-- **MeshChat / MeshChatX** — LXMF messaging clients
-- **rBrowser** — minimal NomadNet page browser
-- **Micron Composer** — visual editor for NomadNet pages
+| Scenario                | Typical device      | Guide file                    |
+|-------------------------|---------------------|-------------------------------|
+| Desktop daily driver    | iMac / workstation  | `DESKTOP-DAILY-DRIVER.md`     |
+| Laptop daily driver     | MacBook / notebook  | `LAPTOP-DAILY-DRIVER.md`      |
+| On-the-go field setup   | Mobile / travel kit | `ONTHEGO.md`                  |
 
-These guides are designed for **friends starting from zero** — all placeholders clearly marked, all steps copy-paste ready.
+Each guide is self-contained: it describes the assumptions, required software, and the suggested way to connect this node to the rest of your mesh.
 
----
+## Prerequisites
 
-## 🖥️ Choose Your Device
+Before you start, you should be comfortable with:
 
-### [iMac Daily Driver →](MESH-DAILY-DRIVER-iMac.md)
-For desktop mesh node with full toolkit:
-- MeshChatX (modern UI)
-- rBrowser (minimal page navigation)
-- NomadNet TUI (optional terminal interface)
-- VS Code site editing workflow
+- Running commands in a terminal.
+- Installing software using your system package manager or `pip`.
+- Editing simple configuration files with a text editor.
 
-### [MacBook Air Daily Driver →](MESH-DAILY-DRIVER-MacBookAir.md)
-For portable mesh node with flexibility:
-- MeshChat (Liam Cottle classic UI)
-- MeshChatX (modern UI, optional)
-- rBrowser (minimal page navigation)
-- Micron Composer (visual site editor)
-- 3 site editing workflows (local, SSH, GUI)
+You will also need:
 
----
+- A supported operating system (Linux or desktop-class OS with Python 3 available).
+- Basic networking connectivity (LAN, Wi-Fi, VPN, or an attached radio/LoRa device, depending on your use case).
 
-## ✨ What You Get
+For upstream documentation and deeper details, see:
 
-✅ One-command startup for all mesh services  
-✅ Automatic backup scripts for USB pen drive  
-✅ Clear identity management (LXMF addresses)  
-✅ Site editing workflows (nano, VS Code, Composer)  
-✅ Resource links to official docs  
-✅ Clean placeholder system for personalization  
+- Reticulum “Get started” documentation: https://reticulum.network/start.html  
+- NomadNet package and documentation: https://pypi.org/project/nomadnet/
 
----
+## 30-second quickstart (conceptual)
 
-## 🚀 Quick Start
+This repository is about **guides**, not one-click installers, but the general flow looks like this:
 
-1. Pick your device guide (iMac or MacBook Air)
-2. Follow the installation steps in the guide
-3. Fill in the `<PLACEHOLDERS>` with your data
-4. Run the daily startup commands
-5. You're on the mesh — walk quietly, keep the signal alive
+1. Install Reticulum using your package manager or Python tooling (for example, `pip install rns`).  
+2. Run Reticulum once to generate its configuration, then adjust the interfaces to match your hardware and transport (radio, Ethernet, Wi-Fi, VPN, etc.).  
+3. Install NomadNet (for example, `pip install nomadnet`) and point it at your running Reticulum stack.  
+4. Follow one of the profiles in this repository (`DESKTOP-DAILY-DRIVER.md`, `LAPTOP-DAILY-DRIVER.md`, or `ONTHEGO.md`) to turn your machine into a usable node in your mesh.
 
----
+Always prefer the upstream docs for the exact install commands on your platform, and use these guides as a layer of opinionated integration on top.
 
-## 📦 What's Included
+## 30-second quickstart (Debian/Ubuntu)
 
-| Tool | Purpose | Port |
-|------|---------|------|
-| **Reticulum** | Mesh network driver | — |
-| **MeshChat** | LXMF messaging (classic) | 8000 |
-| **MeshChatX** | LXMF messaging (modern) | 8787 |
-| **rBrowser** | NomadNet page browser | 5500 |
-| **NomadNet TUI** | Terminal microblog client | — |
-| **Micron Composer** | Visual page editor | 8080 |
+This is a minimal, opinionated starting point for recent Debian/Ubuntu systems.
 
----
+```bash1.
+Install Python tooling and pipx
+sudo apt update
+sudo apt install -y python3 python3-venv pipx
 
-## 🗂️ Repository Structure
+2. Make sure pipx-installed tools are on your PATH
+pipx ensurepath
+exec $SHELL # open a new shell so PATH is updated
 
-\`\`\`
-mesh-guides/
-├── README.md                          # This file
-├── MESH-DAILY-DRIVER-iMac.md          # iMac complete guide
-├── MESH-DAILY-DRIVER-MacBookAir.md    # MacBook Air complete guide
-└── LICENSE                            # CC BY-SA 4.0
-\`\`\`
+3. Install Reticulum and NomadNet into isolated environments
+pipx install rns
+pipx install nomadnet
 
----
+4. Start Reticulum once to generate a default config
+rnsd &
 
-## 📚 Official Resources
+5. Run NomadNet (interactive client)
+nomadnet
 
-- [Reticulum Network](https://reticulum.network/) — Official site
-- [Reticulum Manual](https://reticulum.network/manual/) — Complete documentation
-- [NomadNet](https://github.com/markqvist/NomadNet) — Microblogging client
-- [MeshChat (Liam Cottle)](https://github.com/liamcottle/reticulum-meshchat) — Classic LXMF client
-- [Micron Composer](https://github.com/markqvist/micron) — Page editor
+After this, adjust your Reticulum configuration (interfaces, transports, radios, etc.) according to your hardware and threat model, then follow one of the profiles in this repository:
 
----
+- `DESKTOP-DAILY-DRIVER.md`
+- `LAPTOP-DAILY-DRIVER.md`
+- `ONTHEGO.md`
 
-## 🤝 Contributing
+## Why
 
-Found an error? Have a better workflow? Open an issue or PR.
+Modern communication relies heavily on centralized infrastructure and always-on connectivity.  
+Reticulum and NomadNet make it possible to build small, resilient, and privacy-respecting communication systems that can operate off-grid, over radio, or across ad-hoc links.  
+These guides are meant to be a starting point for people who want to own more of their infrastructure without having to assemble all the pieces from scratch.
 
-This is a living document — contributions welcome.
+## Value for Value
 
----
+If these guides help you build or maintain your own off-grid mesh, you can send value back in any way that makes sense to you.
 
-## 📜 License
+The primary goal here is to keep small, low-power nodes online and evolving quietly over time, not to optimize for attention or growth.
 
-Licensed under **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**
+In a future update, this section will include optional details for supporting this work (for example: Bitcoin on-chain, Lightning, or other privacy-respecting ways to contribute). Until then, simply using, testing, and sharing these guides is already valuable feedback.
 
-https://creativecommons.org/licenses/by-sa/4.0/
+## License
 
-You are free to:
-- **Share** — copy and redistribute
-- **Adapt** — remix, transform, build upon
-
-Under these terms:
-- **Attribution** — give appropriate credit
-- **ShareAlike** — distribute under the same license
-
----
-
-## 🌿 Philosophy
-
-> cypherpunks write code  
-> nature writes resilience  
-> we bridge both
-
-This setup prioritizes:
-- **Simplicity** — minimal dependencies, clear workflows
-- **Resilience** — works offline, survives grid failures
-- **Privacy** — cryptographic identity, no tracking
-- **Sovereignty** — your node, your rules, no permission needed
-
----
-
-**walk quietly, but keep the signal alive.**
-
-₿uilt with Love 🧡 in cooperation with Nature 🌿
+This project is distributed under the terms described in the `LICENSE` file in this repository.
