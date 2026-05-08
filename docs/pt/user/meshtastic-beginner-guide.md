@@ -3,7 +3,7 @@
 **Versão:** 1.0 · **Data:** 2026-05-07 · **Licença:** CC BY-SA 4.0
 **Para quem nunca ouviu falar de Meshtastic e quer começar.**
 
-> 📄 Read this in: PT · [EN](../../en/user/meshtastic-beginner-guide.md) · [ES](../../es/user/meshtastic-beginner-guide.md)
+> 📄 Lê isto em: PT · [EN](../../en/user/meshtastic-beginner-guide.md) · [ES](../../es/user/meshtastic-beginner-guide.md)
 
 ---
 
@@ -396,5 +396,5 @@ Quando quiseres aprofundar:
 
 ☥ walk quietly, ₿ut keep the signal alive ⚡
 
-*Du_arte ☥ rawmesh — Beira Baixa, Portugal*
+*noduscypher-rawmesh node*
 *Licença: CC BY-SA 4.0*

@@ -4,7 +4,7 @@
 **Audiência:** técnicos, radioamadores, sysadmins, engenheiros de rede
 **Compliance:** ETSI EN 300 220 · ANACOM Portugal
 
-> 📄 Read this in: PT · [EN](../../en/technical/meshtastic-technical-guide.md) · [ES](../../es/technical/meshtastic-technical-guide.md)
+> 📄 Lê isto em: PT · [EN](../../en/technical/meshtastic-technical-guide.md) · [ES](../../es/technical/meshtastic-technical-guide.md)
 
 ---
 
@@ -961,5 +961,5 @@ Contribuições, correções e melhorias são bem-vindas via [comunidade Meshtas
 
 ☥ walk quietly, ₿ut keep the signal alive ⚡
 
-*Du_arte ☥ rawmesh — Beira Baixa, Portugal*
+*noduscypher-rawmesh node*
 *Licença: CC BY-SA 4.0 — <https://creativecommons.org/licenses/by-sa/4.0/>*
