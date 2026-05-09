@@ -591,18 +591,51 @@ For fixed ROUTER nodes: `position.fixed_position = true` + manual coordinates. S
 
 ### 5.2. CLIENT_MUTE
 
-- Doesn't forward messages (saves airtime)
-- Useful when you have **multiple close nodes** (e.g., phone + T-Deck in car) — avoids feedback loops
-- Receives normally, just doesn't retransmit
+The `client_mute` role is intended for situations where the node should keep participating in the mesh, but the user does not want to see or hear all traffic on the client (phone/app).
 
-### 5.3. ROUTER / ROUTER_LATE
+In `client_mute`:
 
-- **Only for fixed nodes with continuous power and well-positioned antenna**
-- Forwards packets with priority
-- High RF autonomy doesn't matter (continuous power)
-- Positioning: rooftop, high balcony, with line-of-sight
-- ROUTER_LATE: variant with small artificial delay — used when there are multiple routers and you want to prioritize some over others
+- The node **continues to forward messages in the mesh**, including messages relayed via gateways (for example SMS), if those are configured.
+- The client interface (app) may **not show all received messages** or may **reduce notifications**, acting as a local “noise filter” from the user’s point of view.
+- The radio remains active in the network and still contributes to overall connectivity.
 
+⚠️ Important:
+- `client_mute` is **not** a firewall, it is not a security boundary, and it does not guarantee privacy.
+- It only controls what the user sees/hears on the client side while keeping the node useful for the mesh.
+- If you need strict control over who talks to whom, that must be done with channels, keys and network planning, not just with `client_mute`.
+
+
+### 5.3 ROUTER / ROUTER_LATE — coordination is critical
+
+The `ROUTER` and `ROUTER_LATE` roles are powerful and, if used without coordination, can degrade the entire mesh in a region.
+
+Recommended best practices:
+
+- **Plan within a ~30 km area**
+  - Look at the network in roughly a 30 km radius.
+  - Prioritize setting `ROUTER` on nodes that are **higher** and have the best **line of sight**.
+  - Use `ROUTER_LATE` on intermediate hills or support points once you already have a few well‑placed backbone routers.
+
+- **Hops and background traffic**
+  - Keep `hop_limit` under control: increasing it blindly can create unnecessary floods.
+  - On routers, reduce the frequency of:
+    - `nodeinfo`
+    - position updates
+    - telemetry
+  - For static information (for example a rooftop node that never moves), long intervals (such as 24 hours) are often enough.
+
+- **Rooftops and tall buildings**
+  - Turning every rooftop node into a `ROUTER` usually makes the mesh worse, not better.
+  - In many urban scenarios it makes more sense to use `CLIENT_BASE` on rooftops (well‑placed fixed nodes) instead of filling the area with uncoordinated routers.
+
+- **Coordinate with the local community**
+  - Before promoting a node to `ROUTER` or `ROUTER_LATE`, check:
+    - whether there are already active routers in the area (±30 km)
+    - whether this new router actually adds useful coverage (for example a valley with no coverage) or just duplicates what already exists.
+
+⚠️ In short:
+- `ROUTER` and `ROUTER_LATE` should be used carefully and in coordination with other operators in the region.
+- A few well‑placed routers usually work better than many poorly planned ones.
 ### 5.4. TRACKER
 
 - GPS ON, frequent position broadcast
@@ -940,6 +973,18 @@ For presets other than LongFast, calculate slot via:
 - **ANACOM Portugal:** <https://www.anacom.pt>
 
 ---
+
+### Meshtastic® brand and licensing
+
+Meshtastic® is a registered trademark of Meshtastic LLC.
+
+This guide is not legal advice and does not cover how to register trademarks or how to use the “Meshtastic” brand for commercial purposes.
+
+If you want to use Meshtastic branding (name, logo, visual identity) in projects, services or products, always refer to the official rules first:
+
+- [Licensing & Trademark Rules](https://meshtastic.org/docs/legal/licensing-and-trademark/)
+
+Any initiative that goes beyond community / fair‑use should follow these guidelines and, if needed, obtain explicit permission from Meshtastic LLC.
 
 ## Changelog
 
