@@ -591,17 +591,51 @@ Para nodes ROUTER fixos: `position.fixed_position = true` + coordenadas manuais.
 
 ### 5.2. CLIENT_MUTE
 
-- Não reencaminha mensagens (saves airtime)
-- Útil quando tens **múltiplos nodes próximos** (ex: telemóvel + T-Deck no carro) — evita feedback loops
-- Recebe normalmente, apenas não retransmite
+O modo `client_mute` é pensado para situações em que o nó deve continuar a participar na rede, mas o utilizador não quer ver nem ouvir todo o tráfego no cliente (telemóvel/app).
 
-### 5.3. ROUTER / ROUTER_LATE
+Em `client_mute`:
 
-- **Apenas para nodes fixos com alimentação contínua e antena bem posicionada**
-- Reencaminha pacotes com prioridade
-- Alta autonomia RF não importa (alimentação contínua)
-- Posicionamento: rooftop, varanda alta, com line-of-sight
-- ROUTER_LATE: variante com pequeno delay artificial — usado quando há múltiplos routers e queres priorizar uns sobre outros
+- O nó **continua a reencaminhar mensagens na malha**, incluindo mensagens encaminhadas via gateways (por exemplo SMS), se estiverem configurados.
+- A interface cliente (app) pode **não mostrar todas as mensagens recebidas** ou pode **reduzir notificações**, funcionando como um filtro de “ruído” do ponto de vista do utilizador.
+- O rádio permanece ativo na rede e contribui para a conectividade global.
+
+⚠️ Importante:
+- `client_mute` **não é** uma firewall, não é uma barreira de segurança nem garante de privacidade total.
+- É apenas uma forma de limitar o que o utilizador vê/ouve no cliente, mantendo o nó útil para a malha.
+- Se queres controlar rigorosamente quem fala com quem, isso faz‑se com canais, chaves e planeamento de rede, não apenas com `client_mute`.
+
+
+### 5.3 ROUTER / ROUTER_LATE — coordenação é crítica
+
+Os roles `ROUTER` e `ROUTER_LATE` são poderosos e, se forem usados sem coordenação, podem degradar toda a malha numa região.
+
+Boas práticas recomendadas:
+
+- **Planeamento em área de ~30 km**
+  - Olha para a rede numa área de cerca de 30 km em volta.
+  - Dá prioridade a colocar `ROUTER` nos nós **mais altos** e com melhor **linha de vista**.
+  - Usa `ROUTER_LATE` em montes intermédios ou pontos de apoio quando já tens alguns routers principais bem posicionados.
+
+- **Hops e tráfego de fundo**
+  - Mantém o `hop_limit` sob controlo: aumentar indiscriminadamente pode gerar floods desnecessários.
+  - Em routers, reduz a frequência de:
+    - `nodeinfo`
+    - atualizações de posição
+    - telemetria
+  - Para informação estática (ex.: localização de rooftop que não muda), intervalos longos (por exemplo 24 horas) são muitas vezes suficientes.
+
+- **Rooftops e edifícios altos**
+  - Colocar tudo em `ROUTER` em cada prédio alto tende a piorar, não a melhorar, a malha.
+  - Em muitos cenários urbanos faz mais sentido usar `CLIENT_BASE` em rooftops (nó fixo e bem posicionado, mas sem comportar‑se como backbone “agressivo”).
+
+- **Coordenação com a comunidade**
+  - Antes de promover um nó a `ROUTER` ou `ROUTER_LATE`, verifica:
+    - se já existem routers ativos na área (±30 km)
+    - se esse novo router acrescenta cobertura útil (por exemplo um vale sem cobertura) ou se só duplica o que já existe.
+
+⚠️ Em resumo:
+- `ROUTER` e `ROUTER_LATE` devem ser usados de forma cuidadosa e coordenada com outros operadores na região.
+- Menos routers bem colocados costumam funcionar melhor do que muitos routers mal planeados.
 
 ### 5.4. TRACKER
 
@@ -938,6 +972,18 @@ Para presets diferentes de LongFast, calcular slot via:
 - **ETSI EN 300 220 (oficial):** <https://www.etsi.org/deliver/etsi_en/300200_300299/30022002/>
 - **ECC/REC 70-03:** <https://www.ecodocdb.dk/document/2229>
 - **ANACOM Portugal:** <https://www.anacom.pt>
+
+### Marca e licensing Meshtastic®
+
+Meshtastic® é uma marca registada de Meshtastic LLC.
+
+Este guia não constitui aconselhamento sobre registo de marcas ou sobre uso comercial da marca “Meshtastic”.
+
+Se quiseres usar o branding Meshtastic (nome, logótipo, identidade visual) em projetos, serviços ou produtos, consulta sempre primeiro as regras oficiais:
+
+- [Licensing & Trademark Rules](https://meshtastic.org/docs/legal/licensing-and-trademark/)
+
+Qualquer iniciativa que vá além de uso comunitário e fair use deve respeitar as orientações e, se necessário, obter autorização explícita da Meshtastic LLC.
 
 ---
 
