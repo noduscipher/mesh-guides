@@ -1,96 +1,99 @@
 # mesh-guides
 
-Off-grid Reticulum + NomadNet mesh networking starter kit for Linux and desktop systems.
+Meshtastic EU868 guides for compliant community mesh operation (PT/EN/ES). This repository provides technical and beginner-friendly documentation for Meshtastic nodes running in the EU/UK 868 MHz band, with a focus on modem presets, routing roles, network planning and safe, regulation-aware use in CEPT countries. All guides are community-maintained and aim to give realistic expectations for range, clear recommendations for device roles, and practical examples that help local groups operate within legal limits.
 
-## What is this?
+## Languages / Idiomas
 
-This repository collects opinionated guides for turning everyday machines into resilient off-grid mesh nodes using Reticulum and NomadNet.  
-It focuses on practical, reproducible setups for desktop and laptop devices, with a bias towards CLI tools, minimal dependencies, and composable building blocks.  
-You can mix these guides with radio links, local networks, or overlay networks like Tailscale or VPNs.
+The guides are available in three languages and two levels (Technical / Beginner):
 
-## Scenarios and guides
+- Portuguese (PT)
+- English (EN)
+- Spanish (ES)
 
-Pick the profile that best matches the role you want this node to play in your mesh:
+Each language has:
 
-| Scenario                | Typical device      | Guide file                    |
-|-------------------------|---------------------|-------------------------------|
-| Desktop daily driver    | iMac / workstation  | `DESKTOP-DAILY-DRIVER.md`     |
-| Laptop daily driver     | MacBook / notebook  | `LAPTOP-DAILY-DRIVER.md`      |
-| On-the-go field setup   | Mobile / travel kit | `ONTHEGO.md`                  |
+- a **Technical guide** (deep dive into presets, routing roles, ETSI / EU868 details)
+- a **Beginner guide** (onboarding, conservative range expectations, practical do’s and don’ts)
 
-Each guide is self-contained: it describes the assumptions, required software, and the suggested way to connect this node to the rest of your mesh.
+## Documents
 
-## Prerequisites
+### Portuguese (PT)
 
-Before you start, you should be comfortable with:
+- `docs/pt/technical/meshtastic-technical-guide.md`
+- `docs/pt/beginner/meshtastic-beginner-guide.md`
 
-- Running commands in a terminal.
-- Installing software using your system package manager or `pip`.
-- Editing simple configuration files with a text editor.
+### English (EN)
 
-You will also need:
+- `docs/en/technical/meshtastic-technical-guide.md`
+- `docs/en/beginner/meshtastic-beginner-guide.md`
 
-- A supported operating system (Linux or desktop-class OS with Python 3 available).
-- Basic networking connectivity (LAN, Wi-Fi, VPN, or an attached radio/LoRa device, depending on your use case).
+### Spanish (ES)
 
-For upstream documentation and deeper details, see:
+- `docs/es/technical/meshtastic-technical-guide.md`
+- `docs/es/beginner/meshtastic-beginner-guide.md`
 
-- Reticulum “Get started” documentation: https://reticulum.network/start.html  
-- NomadNet package and documentation: https://pypi.org/project/nomadnet/
+## Scope and audience
 
-## 30-second quickstart (conceptual)
+These guides are written for:
 
-This repository is about **guides**, not one-click installers, but the general flow looks like this:
+- operators running Meshtastic in the **EU/UK 868 MHz** band  
+- small community groups deploying local meshes (urban, peri-urban, rural)  
+- people who want **realistic** expectations for range and reliability, rather than marketing numbers  
 
-1. Install Reticulum using your package manager or Python tooling (for example, `pip install rns`).  
-2. Run Reticulum once to generate its configuration, then adjust the interfaces to match your hardware and transport (radio, Ethernet, Wi-Fi, VPN, etc.).  
-3. Install NomadNet (for example, `pip install nomadnet`) and point it at your running Reticulum stack.  
-4. Follow one of the profiles in this repository (`DESKTOP-DAILY-DRIVER.md`, `LAPTOP-DAILY-DRIVER.md`, or `ONTHEGO.md`) to turn your machine into a usable node in your mesh.
+The focus is on:
 
-Always prefer the upstream docs for the exact install commands on your platform, and use these guides as a layer of opinionated integration on top.
+- modem presets (BW / SF / CR), airtime and practical throughput  
+- routing roles and node types (CLIENT, CLIENT_MUTE, CLIENT_BASE, ROUTER, ROUTER_LATE, REPEATER, SENSOR, etc.)  
+- network planning (hop limits, telemetry, nodeinfo, region codes)  
+- behaviors to avoid, to reduce the risk of harmful interference in shared spectrum  
 
-## 30-second quickstart (Debian/Ubuntu)
+These documents are not firmware development guides and do not replace the official Meshtastic documentation. They sit **on top** of the upstream docs as opinionated, EU868-focused guidance.
 
-This is a minimal, opinionated starting point for recent Debian/Ubuntu systems.
+## Regulatory and safety notes
 
-```bash1.
-Install Python tooling and pipx
-sudo apt update
-sudo apt install -y python3 python3-venv pipx
+The EU/UK 868 MHz band is governed by ETSI EN 300 220 and related CEPT / national regulations. These guides:
 
-2. Make sure pipx-installed tools are on your PATH
-pipx ensurepath
-exec $SHELL # open a new shell so PATH is updated
+- use **conservative** range figures (urban, mixed terrain, and ideal line-of-sight)  
+- emphasize how terrain, antenna placement, node height and RF noise shape real-world performance  
+- recommend planning meshes within sensible geographic scopes (for example, ~30 km areas for most router roles)  
+- encourage careful use of always-on roles (ROUTER, ROUTER_LATE) and favor `CLIENT_BASE` when appropriate in dense areas  
 
-3. Install Reticulum and NomadNet into isolated environments
-pipx install rns
-pipx install nomadnet
+Nothing in this repository is legal advice. Always verify local regulations (for example, ANACOM in Portugal) and adjust your deployment accordingly.
 
-4. Start Reticulum once to generate a default config
-rnsd &
+## Meshtastic® trademark and branding
 
-5. Run NomadNet (interactive client)
-nomadnet
+Meshtastic® is a registered trademark of Meshtastic LLC.
 
-After this, adjust your Reticulum configuration (interfaces, transports, radios, etc.) according to your hardware and threat model, then follow one of the profiles in this repository:
+These guides:
 
-- `DESKTOP-DAILY-DRIVER.md`
-- `LAPTOP-DAILY-DRIVER.md`
-- `ONTHEGO.md`
+- are independent, community-maintained documents  
+- are **not** legal advice and do not explain how to register trademarks  
+- do **not** grant any permission to use the Meshtastic name, logo, or visual identity commercially  
 
-## Why
+If you want to use Meshtastic branding in products, services or projects, you must follow the official Licensing & Trademark Rules:
 
-Modern communication relies heavily on centralized infrastructure and always-on connectivity.  
-Reticulum and NomadNet make it possible to build small, resilient, and privacy-respecting communication systems that can operate off-grid, over radio, or across ad-hoc links.  
-These guides are meant to be a starting point for people who want to own more of their infrastructure without having to assemble all the pieces from scratch.
+- <https://meshtastic.org/docs/legal/licensing-and-trademark/>
+
+## Contributions and feedback
+
+Issues, corrections and pull requests are welcome.
+
+Useful contributions include:
+
+- fixes to technical details (presets, roles, parameter names)  
+- clearer explanations or diagrams  
+- notes from real-world deployments (urban / rural, antennas, mounting, power setups)  
+- translations and language improvements within PT/EN/ES  
+
+The goal is for these guides to remain a living reference for safe and compliant Meshtastic operation in EU868.
 
 ## Value for Value
 
-If these guides help you build or maintain your own off-grid mesh, you can send value back in any way that makes sense to you.
+If these guides help you build or maintain your own mesh, you can send value back in any way that makes sense to you.
 
-The primary goal here is to keep small, low-power nodes online and evolving quietly over time, not to optimize for attention or growth.
+The primary goal is to keep small, low-power nodes online and evolving quietly over time, not to optimize for attention or growth.
 
-In a future update, this section will include optional details for supporting this work (for example: Bitcoin on-chain, Lightning, or other privacy-respecting ways to contribute). Until then, simply using, testing, and sharing these guides is already valuable feedback.
+In a future update, this section may include optional details for supporting this work (for example: Bitcoin on-chain, Lightning, or other privacy-respecting ways to contribute). Until then, simply using, testing, and sharing these guides is already valuable feedback.
 
 ## License
 
