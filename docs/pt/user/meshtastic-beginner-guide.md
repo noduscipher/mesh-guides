@@ -47,7 +47,14 @@ Tudo isto **sem internet, sem operadora, sem cartão SIM**.
 
 - 📵 **Funciona sem rede móvel** — útil em montanha, mar, eventos, emergências
 - 🔒 **Mensagens privadas** — encriptadas automaticamente
-- 🌍 **Longo alcance** — 5 a 15 km típicos, mais com elevação
+### 🌍 Alcance típico
+
+Os valores de alcance em Meshtastic são sempre aproximados e dependem muito do terreno, antenas, altura de instalação e ruído de rádio local.
+
+- **Em ambiente urbano:** tipicamente ~5 a 15 km (com prédios, obstáculos e ruído de rádio).
+- **Em campo aberto / linha de vista com boa elevação:** em condições ideais pode chegar a dezenas de quilómetros.
+
+⚠️ Estes números são indicativos, não garantias. Pequenas mudanças na altura da antena ou no ambiente podem alterar bastante o alcance real.
 - 💰 **Hardware barato** — entre 30 € e 100 € por dispositivo
 - 🔋 **Baixo consumo** — bateria dura dias
 - 🤝 **Comunidade** — em Portugal há já centenas de utilizadores
@@ -84,19 +91,41 @@ A "**mesh**" significa que **todos os dispositivos ajudam todos os outros** — 
 - [OpenELab (DE)](https://eu.openelab.io) — distribuidor europeu Heltec
 - [PTRobotics](https://www.ptrobotics.com) — Portugal
 - [Mauser](https://mauser.pt) — Portugal
+- [Botnroll](https://www.botnroll.com/pt/) — loja PT com eletrónica e módulos LoRa
 
-### Que dispositivo escolher?
+## Que dispositivo escolher
 
-**Para começar (mais barato):**
-- **Heltec WiFi LoRa 32 V3** (~25–30 €) — pequeno, com display OLED
-- **Heltec Wireless Stick Lite V3** (~20 €) — sem display, ainda mais barato
+A escolha do dispositivo depende muito de como vais usar a rede: móvel, fixo em casa ou em exterior remoto.
 
-**Para uso completo (com teclado e ecrã):**
-- **LilyGO T-Deck Plus** (~70 €) — standalone, teclado QWERTY, ecrã táctil
-  - Para detalhes específicos, ver [T-Deck Plus Complete Guide](https://github.com/noduscypher/tdeck-guides)
+### Uso móvel (no bolso / mochila)
 
-**Para mochila e GPS:**
-- **LilyGO T-Beam V1.2** (~40 €) — com GPS integrado
+Se a prioridade é ter um nó sempre contigo:
+
+- **T1000E**  
+  Dispositivo portátil com bateria integrada e antena externa. Boa opção para quem quer andar com o nó no bolso ou na mochila.
+
+- **WisMesh Tag**  
+  Nó compacto pensado para uso móvel. Ideal para tracking pessoal ou para ter um “ponto” extra sempre em movimento na rede.
+
+### Nó fixo em casa (interior, com Wi‑Fi)
+
+Se o objetivo é ter um nó sempre ligado em casa, ligado ao teu Wi‑Fi:
+
+- **Heltec V4 (ESP32)**  
+  Boa base para um nó fixo em casa. Permite integrar com Wi‑Fi e manter a rede ativa a partir de um ponto indoor.
+
+### Exterior / rooftops / locais remotos
+
+Para instalações em telhados, morros ou locais remotos onde queres reforçar a cobertura:
+
+- **WisMesh Repeater Mini**  
+  Repetidor compacto para exterior, pensado para expandir a cobertura da rede a partir de pontos elevados.
+
+- **Seeed Studio Solar Node**  
+  Nó alimentado a energia solar, adequado para locais remotos onde não há alimentação elétrica disponível.
+
+- **T-Beam (legacy)**  
+  Dispositivo mais antigo, que continua funcional, mas hoje em dia existem opções mais recentes e eficientes. Pode ser usado, mas, se estiveres a começar do zero, vale a pena avaliar primeiro as opções acima.
 
 > 💡 Para uma comparação detalhada, vê o [comparador hardware meshtastic.pt](https://meshtastic.pt/comparator).
 
@@ -106,6 +135,17 @@ A "**mesh**" significa que **todos os dispositivos ajudam todos os outros** — 
 - ✅ Antena incluída (a maioria inclui, mas confirma)
 - ✅ Cabo USB-C (alguns vêm sem)
 
+
+### Convenção de nomes (comunidade PT)
+
+Na comunidade PT usa-se muitas vezes uma convenção simples no nome do nó para indicar o tipo de utilização:
+
+- `Nome-8` — **cliente móvel** (nó que anda contigo)
+- `Nome-C-8` — **nó fixo em casa** (interior, com Wi‑Fi)
+- `Nome-GT-8` — **nó exterior sem Wi‑Fi** (gateway terrestre / rooftop simples)
+- `Nome-GW-8` — **nó exterior com Wi‑Fi** (gateway em exterior com ligação de dados local)
+
+⚠️ Esta é apenas uma convenção da comunidade PT, não é uma regra oficial Meshtastic nem da ANACOM. Pode evoluir no futuro (por exemplo, com a existência de um configurador dedicado).
 ---
 
 ## 3. Instalação passo-a-passo
